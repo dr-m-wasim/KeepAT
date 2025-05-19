@@ -41,7 +41,7 @@ class Posts(models.Model):
     img_vid_none = models.IntegerField(blank=True, null=True)
     likes = models.CharField(blank=True, null=True, max_length=20)
     post_timestamp = models.CharField(blank=True, null=True, max_length=200)
-    comments = models.IntegerField(blank=True, null=True, max_length=2000)
+    comments = models.IntegerField(blank=True, null=True)
     views = models.CharField(blank=True, null=True, max_length=20)
     shares = models.CharField(blank=True, null=True, max_length=20)
     reposts = models.CharField(blank=True, null=True, max_length=20)
