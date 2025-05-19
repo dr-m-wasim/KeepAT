@@ -10,12 +10,12 @@ from django.db import models
 
 class Events(models.Model):
     student_id = models.IntegerField(blank=True, null=True)
-    event_id = models.CharField(primary_key=True)
-    event_name = models.CharField(blank=True, null=True)
-    claim = models.CharField(blank=True, null=True)
-    claim_url = models.CharField(blank=True, null=True)
-    post_url = models.CharField(blank=True, null=True)
-    label = models.CharField(blank=True, null=True)
+    event_id = models.CharField(primary_key=True, max_length=20)
+    event_name = models.CharField(blank=True, null=True, max_length=100)
+    claim = models.CharField(blank=True, null=True, max_length=2000)
+    claim_url = models.CharField(blank=True, null=True,max_length=200)
+    post_url = models.CharField(blank=True, null=True, max_length=20)
+    label = models.CharField(blank=True, null=True, max_length=200)
 
     def __str__(self):
         return self.event_name
@@ -32,19 +32,19 @@ class Posts(models.Model):
         ('1', 'Fake'),
     ]
 
-    event_id = models.CharField(blank=True, null=True)
+    event_id = models.CharField(blank=True, null=True, max_length=20)
     post_id = models.AutoField(primary_key=True)
-    post_url = models.CharField(blank=True, null=True)
-    platform = models.CharField(blank=True, null=True)
-    title = models.CharField(blank=True, null=True)
-    student_label = models.CharField(blank=True, null=True)
+    post_url = models.CharField(blank=True, null=True, max_length=200)
+    platform = models.CharField(blank=True, null=True, max_length=50)
+    title = models.CharField(blank=True, null=True , max_length=2000)
+    student_label = models.CharField(blank=True, null=True, max_length=20)
     img_vid_none = models.IntegerField(blank=True, null=True)
-    likes = models.CharField(blank=True, null=True)
-    post_timestamp = models.CharField(blank=True, null=True)
-    comments = models.IntegerField(blank=True, null=True)
-    views = models.CharField(blank=True, null=True)
-    shares = models.CharField(blank=True, null=True)
-    reposts = models.CharField(blank=True, null=True)
+    likes = models.CharField(blank=True, null=True, max_length=20)
+    post_timestamp = models.CharField(blank=True, null=True, max_length=200)
+    comments = models.IntegerField(blank=True, null=True, max_length=2000)
+    views = models.CharField(blank=True, null=True, max_length=20)
+    shares = models.CharField(blank=True, null=True, max_length=20)
+    reposts = models.CharField(blank=True, null=True, max_length=20)
     
     annotator1 =  models.CharField(
         max_length=10,
@@ -85,10 +85,10 @@ class PostsComments(models.Model):
 
     comment_id = models.AutoField(primary_key=True)
     post_id = models.IntegerField(blank=True, null=True)
-    text = models.CharField(blank=True, null=True)
-    user = models.CharField(blank=True, null=True)
-    likes = models.CharField(blank=True, null=True)
-    student_label = models.CharField(blank=True, null=True)
+    text = models.CharField(blank=True, null=True, max_length=2000)
+    user = models.CharField(blank=True, null=True, max_length=20)
+    likes = models.CharField(blank=True, null=True, max_length=20)
+    student_label = models.CharField(blank=True, null=True, max_length=20)
     
     annotator1 = models.CharField(
         max_length=10,
@@ -120,13 +120,13 @@ class PostsComments(models.Model):
 
 class PostsUsers(models.Model):
     post_id = models.AutoField(primary_key=True)
-    username = models.CharField(blank=True, null=True)
-    followers = models.CharField(blank=True, null=True)
-    followings = models.CharField(blank=True, null=True)
+    username = models.CharField(blank=True, null=True, max_length=200)
+    followers = models.CharField(blank=True, null=True, max_length=20)
+    followings = models.CharField(blank=True, null=True, max_length=20)
     verified_unverfied = models.IntegerField(blank=True, null=True)
-    dp_url = models.CharField(blank=True, null=True)
-    posts_count = models.CharField(blank=True, null=True)
-    joining_date = models.CharField(blank=True, null=True)
+    dp_url = models.CharField(blank=True, null=True, max_length=200)
+    posts_count = models.CharField(blank=True, null=True, max_length=20)
+    joining_date = models.CharField(blank=True, null=True, max_length=200)
 
     def __str__(self):
         return self.username
@@ -139,7 +139,7 @@ class PostsUsers(models.Model):
 
 class Students(models.Model):
     student_id = models.AutoField(primary_key=True)
-    name = models.CharField(blank=True, null=True)
+    name = models.CharField(blank=True, null=True, max_length=200)
 
     class Meta:
         verbose_name_plural = "Students"
