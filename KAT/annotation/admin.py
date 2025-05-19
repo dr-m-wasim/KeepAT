@@ -55,7 +55,9 @@ class PostsAdmin(admin.ModelAdmin):
     
     def get_readonly_fields(self, request, obj=None):
         readonly = [field.name for field in Posts._meta.fields]
-
+        
+        readonly.remove('title')
+        
         if request.user.username == 'annotator1':
             readonly.remove('annotator1') 
         elif  request.user.username == 'annotator2':
