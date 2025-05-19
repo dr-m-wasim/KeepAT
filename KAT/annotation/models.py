@@ -7,6 +7,14 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 
+class Students(models.Model):
+    student_id = models.AutoField(primary_key=True)
+    name = models.CharField(blank=True, null=True, max_length=200)
+
+    class Meta:
+        verbose_name_plural = "Students"
+        managed = True
+        db_table = 'students'
 class Events(models.Model):
     student_id = models.IntegerField(blank=True, null=True)
     event_id = models.CharField(primary_key=True, max_length=20)
@@ -135,12 +143,3 @@ class PostsUsers(models.Model):
         managed = True
         db_table = 'posts_users'
 
-
-class Students(models.Model):
-    student_id = models.AutoField(primary_key=True)
-    name = models.CharField(blank=True, null=True, max_length=200)
-
-    class Meta:
-        verbose_name_plural = "Students"
-        managed = True
-        db_table = 'students'
