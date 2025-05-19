@@ -7,7 +7,6 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 
-
 class Events(models.Model):
     student_id = models.IntegerField(blank=True, null=True)
     event_id = models.CharField(primary_key=True, max_length=20)
@@ -22,7 +21,7 @@ class Events(models.Model):
 
     class Meta:
         verbose_name_plural = "Events"
-        managed = False
+        managed = True
         db_table = 'events'
 
 
@@ -38,10 +37,10 @@ class Posts(models.Model):
     platform = models.CharField(blank=True, null=True, max_length=50)
     title = models.CharField(blank=True, null=True , max_length=2000)
     student_label = models.CharField(blank=True, null=True, max_length=20)
-    img_vid_none = models.IntegerField(blank=True, null=True)
+    img_vid_none = models.CharField(blank=True, null=True, max_length=200)
     likes = models.CharField(blank=True, null=True, max_length=20)
     post_timestamp = models.CharField(blank=True, null=True, max_length=200)
-    comments = models.IntegerField(blank=True, null=True)
+    comments = models.CharField(blank=True, null=True, max_length=200)
     views = models.CharField(blank=True, null=True, max_length=20)
     shares = models.CharField(blank=True, null=True, max_length=20)
     reposts = models.CharField(blank=True, null=True, max_length=20)
@@ -70,7 +69,7 @@ class Posts(models.Model):
 
     class Meta:
         verbose_name_plural = "Posts"
-        managed = False
+        managed = True
         db_table = 'posts'
 
 
@@ -114,7 +113,7 @@ class PostsComments(models.Model):
     
     class Meta:
         verbose_name_plural = "Post Comments"
-        managed = False
+        managed = True
         db_table = 'posts_comments'
 
 
@@ -123,7 +122,7 @@ class PostsUsers(models.Model):
     username = models.CharField(blank=True, null=True, max_length=200)
     followers = models.CharField(blank=True, null=True, max_length=20)
     followings = models.CharField(blank=True, null=True, max_length=20)
-    verified_unverfied = models.IntegerField(blank=True, null=True)
+    verified_unverfied = models.CharField(blank=True, null=True, max_length=10)
     dp_url = models.CharField(blank=True, null=True, max_length=200)
     posts_count = models.CharField(blank=True, null=True, max_length=20)
     joining_date = models.CharField(blank=True, null=True, max_length=200)
@@ -133,7 +132,7 @@ class PostsUsers(models.Model):
 
     class Meta:
         verbose_name_plural = "Posts Users"
-        managed = False
+        managed = True
         db_table = 'posts_users'
 
 
@@ -143,5 +142,5 @@ class Students(models.Model):
 
     class Meta:
         verbose_name_plural = "Students"
-        managed = False
+        managed = True
         db_table = 'students'
