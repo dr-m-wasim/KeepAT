@@ -60,21 +60,24 @@ class PostsAdmin(admin.ModelAdmin):
         
         if request.user.username == 'annotator1':
             readonly.remove('annotator1') 
-        elif  request.user.username == 'annotator2':
-            readonly.remove('annotator2') 
-        else:
-            readonly.remove('annotator3') 
+        # elif  request.user.username == 'annotator2':
+        #     readonly.remove('annotator2') 
+        # else:
+        #     readonly.remove('annotator3') 
 
         readonly += ['clickable_post_url', 'post_event', 'post_event_label', 'clickable_post_user']
         
         return readonly
     
-    list_display = ('title','student_label','annotator1','annotator2','annotator3')
+    list_display = ('post_id', 'title','student_label','annotator1')
+                    # ,'annotator2','annotator3')
     
 @admin.register(PostsComments)
 class PostsCommentsAdmin(admin.ModelAdmin):
     list_filter = ['post_id']
-    list_display = ( 'text', 'student_label','annotator1','annotator2','annotator3', 'post_id')
+    list_display = ( 'text', 'student_label','annotator1',
+                    # ,'annotator2','annotator3',
+                      'post_id')
     fields = [field.name for field in PostsComments._meta.fields]
     fields += ['post_final_label']
      

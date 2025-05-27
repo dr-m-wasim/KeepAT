@@ -88,6 +88,7 @@ class PostsComments(models.Model):
         ('Disagree', 'Disagree'),
         ('Query', 'Query'),
         ('Comment', 'Comment'),
+        ('Irrelevent', 'Irrelevent'),
     ]
 
     comment_id = models.AutoField(primary_key=True)
@@ -103,18 +104,18 @@ class PostsComments(models.Model):
         blank=True,
         null=True,
     )
-    annotator2 = models.CharField(
-        max_length=10,
-        choices=FEEDBACK_CHOICES,
-        blank=True,
-        null=True,
-    )
-    annotator3 = models.CharField(
-        max_length=10,
-        choices=FEEDBACK_CHOICES,
-        blank=True,
-        null=True,
-    )
+    # annotator2 = models.CharField(
+    #     max_length=10,
+    #     choices=FEEDBACK_CHOICES,
+    #     blank=True,
+    #     null=True,
+    # )
+    # annotator3 = models.CharField(
+    #     max_length=10,
+    #     choices=FEEDBACK_CHOICES,
+    #     blank=True,
+    #     null=True,
+    # )
 
     def __str__(self):
         return self.text
